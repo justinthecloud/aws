@@ -1,65 +1,65 @@
- .VirtualBox/
-        .android/
-        .aws/
-        .bash_history
-        .cisco/
-        .fontconfig/
-        .gitconfig
-        .idlerc/
-        .ipython/
-        .jupyter/
-        .oracle_jre_usage/
-        .pia_manager_crash.log
-        .swfinfo
-        .viminfo
-        .vscode/
-        3D Objects/
-        AWS Learning/
-        AWS/
-        Anaconda3/
-        AppData/
-        Cofco International/
-        Contacts/
-        Creative Cloud Files/
-        Desktop/
-        Documents/
-        Downloads/
-        Dropbox/
-        Favorites/
-        Google Drive/
-        Hello
-        Links/
-        MicrosoftEdgeBackups/
-        Music/
-        NTUSER.DAT
-        NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.0.regtrans-ms
-        NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.1.regtrans-ms
-        NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.2.regtrans-ms
-        NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.blf
-        NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TM.blf
-        NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TMContainer00000000000000000001.regtrans-ms
-        NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TMContainer00000000000000000002.regtrans-ms
-        OneDrive - Cofco International/
-        OneDrive/
-        Pictures/
-        Saved Games/
-        Searches/
-        Sti_Trace.log
-        Test
-        Tracing/
-        VPC.JSON
-        Videos/
-        VirtualBox VMs/
-        berbs.csv
-        credentials.csv
-        gopro3.mp4
-        iam.justin.allen@googlemail.com Creative Cloud Files/
-        ntuser.dat.LOG1
-        ntuser.dat.LOG2
-        ntuser.ini
-        old mccloud root files/
-        pipeline.json
-        source/
-        test folder
-        test.csv
-
+/.VirtualBox/
+/.android/
+/.aws/
+/.bash_history
+/.cisco/
+/.fontconfig/
+/.gitconfig
+/.idlerc/
+/.ipython/
+/.jupyter/
+/.oracle_jre_usage/
+/.pia_manager_crash.log
+/.swfinfo
+/.viminfo
+/.vscode/
+/3D Objects/
+/AWS Learning/
+/AWS/
+Anaconda3/
+/AppData/
+/Cofco International/
+/Contacts/
+/Creative Cloud Files/
+/Desktop/
+/Documents/
+/Downloads/
+/Dropbox/
+/Favorites/
+/Google Drive/
+Hello
+/Links/
+/MicrosoftEdgeBackups/
+/Music/
+NTUSER.DAT
+NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.0.regtrans-ms
+NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.1.regtrans-ms
+NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.2.regtrans-ms
+NTUSER.DAT{a3f69093-688f-11e8-a12c-08606e7f646f}.TxR.blf
+NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TM.blf
+NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TMContainer00000000000000000001.regtrans-ms
+NTUSER.DAT{a3f69094-688f-11e8-a12c-08606e7f646f}.TMContainer00000000000000000002.regtrans-ms
+/OneDrive - Cofco International/
+/OneDrive/
+/Pictures/
+/Saved Games/
+/Searches/
+Sti_Trace.log
+Test
+/Tracing/
+VPC.JSON
+/Videos/
+/VirtualBox VMs/
+berbs.csv
+credentials.csv
+gopro3.mp4
+iam.justin.allen@googlemail.com Creative Cloud Files/
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+/old mccloud root files/
+pipeline.json
+/source/
+test folder
+test.csv
+'Cookies/'
