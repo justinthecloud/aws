@@ -65,3 +65,35 @@ Resources:
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Private-B
+        
+# Route Tables for the subnets
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+      - Key: Name
+        Value: Public
+  PublicRoute1:
+  Type: AWS::EC2::Route
+  DependsOn: AttachGateway
+  Properties:
+    RouteTableId: !Ref PublicRouteTable
+    DestinationCidrBlock: 0.0.0.0/0
+    GatewayId: !Ref InternetGateway
+
+# Private Route Table
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+      - Key: Name
+        Value: Private
+      
+  PrivateRoute1: #Private Route table can access the internet via a NAT (Created Below)
+    Type: AWS::EC2::Route
+    RouteTableId: !Ref PrivateRouteTable
+    DestinationCidrBlock: 0.0.0.0/0
+    # Route traffic through the NAT Gateway
+    NatGatewayId: ???
