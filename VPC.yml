@@ -6,8 +6,8 @@ Resources:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.1.0.0/16
-      EnableDnsSupport: false
-      EnableDnsHostnames: false
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
       Tags:
       - Key: Name
         Value: !Join ['',[!Ref "AWS::StackName", "-VPC2"]]
@@ -31,7 +31,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.1.10.0/24
-      AvailabilityZone: !Select [0, !GetAZs] # Get the first AZ in the list
+      AvailabilityZone: !Select [ 0, !GetAZs ] # Get the first AZ in the list
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Public-A
@@ -42,7 +42,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.1.20.0/24
-      AvailabilityZone: !Select [1, !GetAZs] # Get the second AZ in the list
+      AvailabilityZone: !Select [ 1, !GetAZs ] # Get the second AZ in the list
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Public-B
@@ -53,7 +53,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.1.50.0/24
-      AvailabilityZone: !Select [0, !GetAZs] #Get the first AZ in the list
+      AvailabilityZone: !Select [ 0, !GetAZs ] #Get the first AZ in the list
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Private-A
@@ -63,7 +63,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.1.60.0/24
-      vailabilityZone: !Select [1, !GetAZs] #Get the second AZ in the list
+      vailabilityZone: !Select [ 1, !GetAZs ] #Get the second AZ in the list
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Private-B
@@ -77,12 +77,12 @@ Resources:
       - Key: Name
         Value: Public
   PublicRoute1:
-  Type: AWS::EC2::Route
-  DependsOn: AttachGateway
-  Properties:
-    RouteTableId: !Ref PublicRouteTable
-    DestinationCidrBlock: 0.0.0.0/0
-    GatewayId: !Ref InternetGateway
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
 
 # Private Route Table
   PrivateRouteTable:
@@ -95,10 +95,11 @@ Resources:
       
   PrivateRoute1: #Private Route table can access the internet via a NAT (Created Below)
     Type: AWS::EC2::Route
-    RouteTableId: !Ref PrivateRouteTable
-    DestinationCidrBlock: 0.0.0.0/0
-    # Route traffic through the NAT Gateway
-    NatGatewayId: NATGateway
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      # Route traffic through the NAT Gateway
+      NatGatewayId: NATGateway
     
   # NAT Gateway
   NATGateway:
