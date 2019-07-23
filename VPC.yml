@@ -96,7 +96,7 @@ Resources:
     RouteTableId: !Ref PrivateRouteTable
     DestinationCidrBlock: 0.0.0.0/0
     # Route traffic through the NAT Gateway
-    NatGatewayId: ???
+    NatGatewayId: NATGateway
     
   # NAT Gateway
   NATGateway:
@@ -111,3 +111,27 @@ Resources:
     Type: AWS::Ec2::EIP
     Properties:
       Domain: VPC
+      
+# Attach public subnets to public route tables
+  # and attach private subnets to private route tables:
+  
+  PublicSubnetARouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnetA
+      RouteTableId: !Ref PublicRouteTable
+  PublicSubnetBRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      SubnetId: !Ref PublicSubnetB
+      RouteTableId: !Ref PublicRouteTable
+  PrivateSubnetARouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnetA
+      RouteTableId: !Ref PrivateRouteTable
+  PrivateSubnetBRouteTableAssociation:    
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnetB
+      RouteTableId: !Ref PrivateRouteTable
