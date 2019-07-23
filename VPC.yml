@@ -97,3 +97,17 @@ Resources:
     DestinationCidrBlock: 0.0.0.0/0
     # Route traffic through the NAT Gateway
     NatGatewayId: ???
+    
+  # NAT Gateway
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !Ref PublicSubnetA
+      SubnetId: !Ref PublicSubnetA
+      Tags:
+      - Key: Name
+        Value: !Sub NAT-${AWS::StackName}
+  ElasticIPAddress:
+    Type: AWS::Ec2::EIP
+    Properties:
+      Domain: VPC
