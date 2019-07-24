@@ -17,8 +17,8 @@ Resources:
   InternetGateway:
     Type: AWS::EC2::InternetGateway
     DependsOn: VPC
-  AttachedGateway:
-    Type: AWS:EC2::VPCGatewayAttachment
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
     # You cannot attach an IGW to a VPC unless both are created:
     Properties:
       VpcId: !Ref VPC
@@ -63,7 +63,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.1.60.0/24
-      vailabilityZone: !Select [ 1, !GetAZs ] #Get the second AZ in the list
+      AvailabilityZone: !Select [ 1, !GetAZs ] #Get the second AZ in the list
       Tags:
       - Key: Name
         Value: !Sub ${AWS::StackName}-Private-B
@@ -99,21 +99,9 @@ Resources:
       RouteTableId: !Ref PrivateRouteTable
       DestinationCidrBlock: 0.0.0.0/0
       # Route traffic through the NAT Gateway
-      NatGatewayId: NATGateway
+      NatGatewayId: !Ref NATGateway
     
-  # NAT Gateway
-  NATGateway:
-    Type: AWS::EC2::NatGateway
-    Properties:
-      AllocationId: !Ref PublicSubnetA
-      SubnetId: !Ref PublicSubnetA
-      Tags:
-      - Key: Name
-        Value: !Sub NAT-${AWS::StackName}
-  ElasticIPAddress:
-    Type: AWS::Ec2::EIP
-    Properties:
-      Domain: VPC
+  
       
 # Attach public subnets to public route tables
   # and attach private subnets to private route tables:
@@ -138,3 +126,17 @@ Resources:
     Properties:
       SubnetId: !Ref PrivateSubnetB
       RouteTableId: !Ref PrivateRouteTable
+      
+# NAT Gateway
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt ElasticIPAddress.AllocationId
+      SubnetId: !Ref PublicSubnetA
+      Tags:
+      - Key: Name
+        Value: !Sub NAT-${AWS::StackName}
+  ElasticIPAddress:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: VPC      
